@@ -7,7 +7,7 @@
 Author: Daniel Simmons-Ritchie
 Last updated: Oct 25, 2018
 
-About: This script was written to analyze campaign finance data from Pennsylvania's 2018 elections.
+About: A python script written to analyze campaign finance data from Pennsylvania's 2018 elections.
 
 The data is stored as text files and can be downloaded here: https://www.dos.pa.gov/VotingElections/CandidatesCommittees/CampaignFinance/Resources/Pages/FullCampaignFinanceExport.aspx
 
