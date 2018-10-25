@@ -1,12 +1,12 @@
 
 """
-CAMPAIGN FINANCE ANALYZER v3
+CAMPAIGN FINANCE CRUNCHER
 
 CREATED BY DANIEL SIMMONS-RITCHIE
 
-ABOUT: Analyzes campaign finance CSVs using Pandas.
-This version differs from v2 in that it  is designed to handle the Dept of State's "full export" dataset.
+ABOUT: Analyzes Pa. campaign finance CSVs using Pandas.
 
+Data available here: https://www.dos.pa.gov/VotingElections/CandidatesCommittees/CampaignFinance/Resources/Pages/FullCampaignFinanceExport.aspx
 
 """
 
@@ -29,8 +29,6 @@ def campaign_finance_analyzer():
 
     filer_columns = ['FILERID', 'EYEAR', 'CYCLE', 'AMMEND', 'TERMINATE', 'FILERTYPE', 'FILERNAME', 'OFFICE', 'DISTRICT', 'PARTY', 'ADDRESS1', 'ADDRESS2', 'CITY', 'STATE', 'ZIPCODE', 'COUNTY', 'PHONE', 'BEGINNING', 'MONETARY', 'INKIND']
 
-
-
     ##################### READ CSV AND SET COLUMN NAMES #######################
 
     print("Importing CSVs into pandas...")
@@ -40,7 +38,6 @@ def campaign_finance_analyzer():
                               names=contrib_columns, dtype={'FILERID': 'object', 'ZIPCODE':'object','EZIPCODE':'object'}, low_memory=False)
     df_filer = pd.read_csv("/Users/dsimmonsritchie/PycharmProjects/campaign_finance_analyzer_v3/filer_2018.txt", header=None, error_bad_lines=False,
                            names=filer_columns, dtype={'ZIPCODE':'object'})
-
 
     ##################### PANDAS ANALYSIS #######################
 
@@ -168,36 +165,6 @@ def get_today_date():
     today = datetime.datetime.today()
     today = today.strftime("%b_%d_%Y_%I_%M_%p")
     return today
-
-
-def merged_data():
-    #Wolf = Join contrib info from wolf_grouped data
-    wolf_grouped_merged = pd.merge(wolf_grouped, df_wolf[['CONTRIBUTOR','ADDRESS1_x','ADDRESS2_x']], left_on = 'CONTRIBUTOR', right_on = 'CONTRIBUTOR', how='left')
-    wolf_grouped_merged = wolf_grouped_merged.drop_duplicates()
-
-    print(wolf_grouped_merged)
-
-
-
-    # #Analysis complete message
-    print("Pandas analysis complete")
-
-def old_export():
-    # Saving this in case new code messes up in some way.
-
-    ##################### EXPORT #######################
-
-    #Turning Wolf and Wagner dataframes into separate sheets in same spreadsheet
-    print("Generating excel file...")
-    writer = pd.ExcelWriter('final.xlsx')
-    df_wolf.to_excel(writer,"Wolf_fulldata",index=False)
-    df_wagner.to_excel(writer,"Wagner_fulldata",index=False)
-    wolf_grouped.to_excel(writer,"Wolf_top_donors",index=False)
-    wagner_grouped.to_excel(writer,"Wagner_top_donors",index=False)
-    writer.save()
-    print("Files created")
-
-
 
 
 if __name__ == '__main__':
