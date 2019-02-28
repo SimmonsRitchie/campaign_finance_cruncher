@@ -15,10 +15,7 @@ UPDATES: This version is in BETA!!! Just trying to see how it works. Don't use t
 """
 
 import pandas as pd
-import csv
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 import datetime
 import requests
 import zipfile
@@ -69,6 +66,7 @@ def download_data(base_folder_zipped, base_folder_unzipped):
     # Getting and setting important variables
     today = get_today_date()
     year = get_current_year()
+
     zip_filename = 'raw_file_{}.zip'.format(today)
     os.mkdir(base_folder_zipped) # Creating directory to stash zipped file
     zip_path = os.path.join(base_folder_zipped,zip_filename)
@@ -150,9 +148,6 @@ def campaign_finance_analyzer(base_folder_unzipped, path_to_excel_file):
 
 
     #################### GET PATHS OF TEXT FILES ########################
-
-    # Getting current year so we have accurate file names
-    year = get_current_year()
 
     # Generating paths with partial filenames
     contrib_path = os.path.join(base_folder_unzipped,"contrib*")

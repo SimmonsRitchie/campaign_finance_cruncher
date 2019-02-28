@@ -1,14 +1,18 @@
 ## CAMPAIGN FINANCE CRUNCHER
 
-A python script written to analyze campaign finance data during Pennsylvania 2018 election. It produces an excel spreadsheet that summarizes the data.
+This program was used to scrape and analyze campaign finance data during Pennsylvania 2018 election.
+
+The program downloads data from Pa.'s Dept of State website then uses pandas to analyze the date, with a particular focus on the gubernatorial race between Democrat Tom Wolf and Republican Scott Wagner.
+ 
+It then produces an excel spreadsheet that summarizes the data.
 
 ### About
 
-The data is stored as text files and can be downloaded here: https://www.dos.pa.gov/VotingElections/CandidatesCommittees/CampaignFinance/Resources/Pages/FullCampaignFinanceExport.aspx
+The raw campaign finance data is stored as text files and can be downloaded here: https://www.dos.pa.gov/VotingElections/CandidatesCommittees/CampaignFinance/Resources/Pages/FullCampaignFinanceExport.aspx
 
-This script uses Pandas to clean, sort and group the data, with a particular focus on Pennsylvania's gubernatorial election. The script can easily be adapted to focus on other candidates.
+The script can easily be adapted to focus on other candidates.
 
-It ultimately produces an excel spreadsheet that includes the following sheets:
+In its current form it produces an excel file with the following sheets:
 
     total_donations': ranks PACs by the total amount of donations they've recieved. Please note that this includes advocacy and party PACs (eg. REPUBLICAN STATE COMMITTEE OF PENNSYLVANIA) in addition to PACs for individual candidates.
     wolf_v_wagner : summarizes key data in Wagner and Wolf race
@@ -22,7 +26,4 @@ It ultimately produces an excel spreadsheet that includes the following sheets:
 
 Daniel Simmons-Ritchie, reporter the Patriot-News/PennLive.com
 
-Last updated: Oct 26, 2018
-
-About: 
 
